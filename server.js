@@ -1,6 +1,8 @@
 const express= require('express');
 const hbs= require('hbs');
 const fs= require('fs');
+
+const port = process.env.PORT || 3000;
 //to create  an app
 var app=express();
 
@@ -25,9 +27,9 @@ console.log(log);
   next();
 });
 
-app.use((req, res, next) =>{  // GET 'http://www.example.com/admin/new'
+/*app.use((req, res, next) =>{  // GET 'http://www.example.com/admin/new'
 res.render('maintenance.hbs');
-});
+});*/
 
 hbs.registerHelper('getCurrentYear', ()=> {
   return new Date().getFullYear()
@@ -68,6 +70,6 @@ res.render('about.hbs',{
 });
 // to bind the server to listen to the requests coming fro m the port
 //3000 is the port number  in our localhost
-app.listen(3000,()=>{
-  console.log('server is up and running and listening on port 3000');
+app.listen(port,()=>{
+  console.log('server is up on port '+port);
 });
